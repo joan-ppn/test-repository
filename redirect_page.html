@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+</head>
+<body>
+    <p>Redirecting...</p>
+    
+    <script>
+        // Get current URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const ppnid = urlParams.get('ppnid');
+        
+        // Build redirect URL
+        let redirectUrl = 'sample_survey.html';
+        
+        if (ppnid) {
+            redirectUrl += '?ppnid=' + encodeURIComponent(ppnid);
+        }
+        
+        // Immediate redirect
+        window.location.replace(redirectUrl);
+    </script>
+</body>
+</html>

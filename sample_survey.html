@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Survey</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .survey-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .ppnid-display {
+            background-color: #e8f4fd;
+            padding: 15px;
+            border-left: 4px solid #007cba;
+            margin-bottom: 20px;
+        }
+        .error {
+            background-color: #fdf2f2;
+            border-left: 4px solid #dc3545;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="survey-container">
+        <h1>Sample Survey</h1>
+        
+        <div id="ppnid-info" class="ppnid-display">
+            <strong>Participant ID:</strong> <span id="ppnid-value">Loading...</span>
+        </div>
+        
+        <p>This is a sample survey page to test the redirect functionality.</p>
+        <p>The redirect was successful if you can see a participant ID above.</p>
+        
+        <form>
+            <h3>Sample Survey Question</h3>
+            <p>How would you rate this redirect test?</p>
+            <input type="radio" id="excellent" name="rating" value="excellent">
+            <label for="excellent">Excellent</label><br>
+            
+            <input type="radio" id="good" name="rating" value="good">
+            <label for="good">Good</label><br>
+            
+            <input type="radio" id="fair" name="rating" value="fair">
+            <label for="fair">Fair</label><br>
+            
+            <input type="radio" id="poor" name="rating" value="poor">
+            <label for="poor">Poor</label><br><br>
+            
+            <button type="button" onclick="alert('Survey submitted! (This is just a test)')">Submit</button>
+        </form>
+    </div>
+    
+    <script>
+        // Get and display the ppnid parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const ppnid = urlParams.get('ppnid');
+        const ppnidElement = document.getElementById('ppnid-value');
+        const ppnidContainer = document.getElementById('ppnid-info');
+        
+        if (ppnid) {
+            ppnidElement.textContent = ppnid;
+        } else {
+            ppnidElement.textContent = 'No participant ID found';
+            ppnidContainer.classList.remove('ppnid-display');
+            ppnidContainer.classList.add('error');
+        }
+    </script>
+</body>
+</html>
